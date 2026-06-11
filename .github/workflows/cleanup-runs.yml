@@ -20,7 +20,7 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            async function deleteRuns(workflowId) {
+            async function deleteRuns(workflowId, keepRunId = null) {
               const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
                 owner,
                 repo,
@@ -29,6 +29,10 @@ jobs:
               });
 
               for (const run of runs) {
+                if (keepRunId && run.id === keepRunId) {
+                  continue;
+                }
+
                 try {
                   await github.rest.actions.deleteWorkflowRun({
                     owner,
@@ -42,4 +46,4 @@ jobs:
             }
 
             await deleteRuns("pages.yml");
-            await deleteRuns("cleanup-runs.yml");
+            await deleteRuns("cleanup-runs.yml", context.runId);
