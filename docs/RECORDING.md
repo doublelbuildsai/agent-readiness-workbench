@@ -1,24 +1,34 @@
 # Record the LinkedIn demo video (macOS)
 
-## Before you record
+## Option 1 — Fully automated (recommended)
+
+One command builds the static site, runs the autoplay demo in a headless browser, and saves a video:
+
+```bash
+bash scripts/record-demo.sh
+```
+
+Output: `recordings/agent-readiness-demo-YYYYMMDD-HHMMSS.webm` (or `.mp4` if `ffmpeg` is installed).
+
+Options:
+
+```bash
+bash scripts/record-demo.sh              # default, ~70 seconds (hero + deal + agents)
+bash scripts/record-demo.sh --pace 4     # slower agent steps, ~85 seconds
+bash scripts/record-demo.sh --hold 5   # extra seconds on results screen
+```
+
+First run installs Playwright + Chromium automatically.
+
+## Option 2 — Manual screen capture
 
 1. Build and preview locally:
    ```bash
-   npm run build
-   npm run preview
+   python3 scripts/build-static.py
+   bash scripts/preview-static.sh
    ```
-2. Open **http://localhost:4173** in Chrome (full screen later).
-3. Hide distractions: Do Not Disturb on, close Slack/email.
-
-## Option 1 — Autoplay mode (easiest)
-
-Open this URL — the demo runs itself (~90 seconds):
-
-```
-http://localhost:4173/?record=1
-```
-
-Then record the screen (steps below). No clicking needed.
+2. Open **http://localhost:4173/?record=1** in Chrome (full screen).
+3. Record with **Cmd + Shift + 5** while autoplay runs (~80 seconds).
 
 ## Option 2 — Manual click-through (more natural)
 

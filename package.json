@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "export-demo": "python3 scripts/export-static-demo.py",
-    "build": "node scripts/build-static.mjs",
+    "build": "python3 scripts/build-static.py",
     "preview": "npx --yes serve dist -l 4173"
   },
   "license": "MIT"

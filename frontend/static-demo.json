@@ -84,7 +84,7 @@
       "agent_id": "super-agent-00",
       "message": "Quote auto-generated: SG-Q-NORTHLINE \u2014 no audit trail",
       "status": "error",
-      "warning": "No audit log \u2014 Finance cannot reconcile (Deloitte 2026: only 21% mature governance)"
+      "warning": "No audit log \u2014 Finance cannot reconcile approvals later"
     },
     {
       "type": "complete",
@@ -286,8 +286,8 @@
       "margin_protected": 57600.0,
       "audit": [
         {
-          "event_id": "20c93135",
-          "timestamp": "2026-06-11T03:58:15.901335+00:00",
+          "event_id": "db466c11",
+          "timestamp": "2026-06-11T12:22:50.765502+00:00",
           "agent_id": "deal-agent-02",
           "event_type": "crm_lookup",
           "details": {
@@ -297,8 +297,8 @@
           "append_only": true
         },
         {
-          "event_id": "320325eb",
-          "timestamp": "2026-06-11T03:58:16.403226+00:00",
+          "event_id": "33b470a4",
+          "timestamp": "2026-06-11T12:22:51.267403+00:00",
           "agent_id": "policy-agent-03",
           "event_type": "policy_search",
           "details": {
@@ -319,8 +319,8 @@
           "append_only": true
         },
         {
-          "event_id": "06af02c8",
-          "timestamp": "2026-06-11T03:58:18.407506+00:00",
+          "event_id": "bcfb3976",
+          "timestamp": "2026-06-11T12:22:53.271876+00:00",
           "agent_id": "pricing-agent-04",
           "event_type": "cpq_validate",
           "details": {
@@ -332,8 +332,8 @@
           "append_only": true
         },
         {
-          "event_id": "c9e659d6",
-          "timestamp": "2026-06-11T03:58:18.908626+00:00",
+          "event_id": "f155c6d5",
+          "timestamp": "2026-06-11T12:22:53.773031+00:00",
           "agent_id": "compliance-agent-05",
           "event_type": "risk_assessment",
           "details": {
@@ -354,8 +354,8 @@
           "append_only": true
         },
         {
-          "event_id": "775fb76b",
-          "timestamp": "2026-06-11T03:58:19.910860+00:00",
+          "event_id": "e1ea5e27",
+          "timestamp": "2026-06-11T12:22:54.775284+00:00",
           "agent_id": "compliance-agent-05",
           "event_type": "hitl_approved",
           "details": {
@@ -368,8 +368,8 @@
           "append_only": true
         },
         {
-          "event_id": "9cfcb27f",
-          "timestamp": "2026-06-11T03:58:20.412005+00:00",
+          "event_id": "98ee70c0",
+          "timestamp": "2026-06-11T12:22:55.276296+00:00",
           "agent_id": "pricing-agent-04",
           "event_type": "quote_generated",
           "details": {
@@ -389,8 +389,8 @@
           "append_only": true
         },
         {
-          "event_id": "ddd70624",
-          "timestamp": "2026-06-11T03:58:20.913136+00:00",
+          "event_id": "e7c1918e",
+          "timestamp": "2026-06-11T12:22:55.777503+00:00",
           "agent_id": "compliance-agent-05",
           "event_type": "audit_export",
           "details": {

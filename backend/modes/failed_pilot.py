@@ -104,7 +104,7 @@ async def run_failed_pilot(scenario_id: str) -> AsyncIterator[TraceEvent]:
         agent_id=agent.agent_id,
         message=f"Quote auto-generated: {quote_call.outputs['quote_id']} — no audit trail",
         status="error",
-        warning="No audit log — Finance cannot reconcile (Deloitte 2026: only 21% mature governance)",
+        warning="No audit log — Finance cannot reconcile approvals later",
     )
 
     yield await _emit(

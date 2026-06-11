@@ -21,16 +21,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
       - name: Build static site
-        run: npm run build
-
-      - name: Add nojekyll
-        run: touch dist/.nojekyll
+        run: python3 scripts/build-static.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
