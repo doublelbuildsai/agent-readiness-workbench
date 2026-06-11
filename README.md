@@ -1,6 +1,6 @@
 # Agent Readiness Workbench
 
-A hybrid demo for personal brand and executive storytelling: **same wholesale deal, two architectures** — a failed agentic pilot vs. a production-grade revenue agent stack.
+A side-by-side demo of **the same wholesale deal, two agent architectures** — a failed agentic pilot vs. a production-grade revenue agent stack.
 
 Built for **Summit Gear Co.** (fictional outdoor products wholesaler) selling to retail chains like **Northline Retail Group**.
 
@@ -12,7 +12,7 @@ Enterprise teams are hitting a consistent gap:
 - Pilots often fail to prove ROI — not because models are weak, but because **governance, integration, and bounded scope** are underbuilt
 - Revenue teams invest in agents, but deals still stall in approval chains
 
-This workbench makes that gap visible in 90 seconds.
+This workbench makes that gap visible in about two minutes.
 
 ## What it demonstrates
 
@@ -37,35 +37,30 @@ cp .env.example .env   # optional: add LLM_API_KEY for live model calls
 
 Open http://localhost:8080
 
-## Static demo (GitHub Pages — for LinkedIn)
+## Static preview (no API)
 
-No server needed. The demo auto-plays from `static-demo.json` on GitHub Pages.
+Build a self-contained copy that runs from pre-recorded events in `static-demo.json`:
 
 ```bash
 python3 scripts/build-static.py
-# or: bash scripts/build-static.sh
 python3 -m http.server 4173 --directory dist
 ```
 
 Open http://localhost:4173
 
-**Autoplay for screen recording:** http://localhost:4173/?record=1
-
-**Automated video capture (no manual recording):**
+Regenerate `static-demo.json` after backend changes:
 
 ```bash
-bash scripts/record-demo.sh
+PYTHONPATH="$(pwd)" python3 scripts/export-static-demo.py
 ```
 
-**Deploy:** see [docs/LINKEDIN.md](docs/LINKEDIN.md) and [docs/RECORDING.md](docs/RECORDING.md)
+## Walkthrough
 
-## 90-second demo script
-
-1. Select **Tier-1 Renewal** (Northline Retail, $480K, 22% promo)
-2. Click **Run failed pilot** — watch auto-approval, promo stacking, no audit
-3. Click **Run production lane** — watch policy RAG, risk score, parallel routing
-4. Click **Approve HITL gate** — quote generates with audit export
-5. Export audit JSON — show Finance-ready trail
+1. Start the guided story and review the **Northline Retail** deal
+2. Play the **Typical pilot** path — auto-approval, promo stacking, no audit
+3. Play the **Production approach** — policy checks, risk score, parallel routing
+4. Approve the HITL gate — quote generates with audit export
+5. Review results and optionally download the approval record
 
 ## API
 
@@ -85,11 +80,7 @@ Rep request → Orchestrator
 
 Failed lane: single MonolithicAgent with unbounded permissions.
 
-## LinkedIn hook
-
-> A retail buyer asks for 22% off a $480K wholesale renewal. Your agentic pilot auto-approves it. Your RevOps team kills the deal. I built a side-by-side demo of what failed vs. what production-grade revenue agents actually need — channel policy grounding, parallel approvals, and an audit trail Finance can use.
-
-## Themes this demo reflects
+## Themes
 
 - Agentic workflows need scoped agents, not monolithic super-agents
 - Production adoption depends on governance, auditability, and human sign-off — not model quality alone

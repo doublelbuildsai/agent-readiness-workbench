@@ -1,13 +1,5 @@
 const STEP_DELAY_MS = 500;
 
-const RECORD_INTRO = {
-  heroMs: 2800,
-  dealMs: 3200,
-  beforeAgentsMs: 1200,
-  betweenScenariosMs: 2200,
-  resultsHoldMs: 5000,
-};
-
 const FRIENDLY = {
   MonolithicAgent: "AI assistant",
   DealAgent: "Sales data",
@@ -31,8 +23,6 @@ const state = {
   currentStep: 1,
   useStatic: false,
   staticDemo: null,
-  recordMode: new URLSearchParams(location.search).has("record"),
-  recordPace: Math.max(1, Number(new URLSearchParams(location.search).get("pace")) || 3.5),
 };
 
 const elements = {
@@ -70,9 +60,6 @@ async function init() {
     await loadScenarios();
   }
   bindEvents();
-  if (state.recordMode) {
-    startRecordMode();
-  }
 }
 
 async function detectStaticMode() {
@@ -97,8 +84,7 @@ async function loadScenarios() {
 function bindEvents() {
   elements.startGuided.addEventListener("click", () => {
     goToStep(1);
-    const scrollBehavior = state.recordMode ? "instant" : "smooth";
-    document.querySelector(".layout").scrollIntoView({ behavior: scrollBehavior });
+    document.querySelector(".layout").scrollIntoView({ behavior: "smooth" });
   });
   elements.btnStep2.addEventListener("click", () => goToStep(2));
   elements.btnStep4.addEventListener("click", () => goToStep(4));
@@ -107,25 +93,6 @@ function bindEvents() {
   elements.approveHitl.addEventListener("click", () => runScenario("production", true));
   elements.exportAudit.addEventListener("click", exportAudit);
   elements.restartDemo.addEventListener("click", restartDemo);
-}
-
-async function startRecordMode() {
-  // Fixed intro beats (not scaled by pace) — hero → deal → agents.
-  await sleep(RECORD_INTRO.heroMs);
-  goToStep(1);
-  elements.panelDeal.scrollIntoView({ behavior: "instant", block: "start" });
-  await sleep(RECORD_INTRO.dealMs);
-  elements.btnStep2.click();
-  await sleep(RECORD_INTRO.beforeAgentsMs);
-  await runScenario("failed");
-  await sleep(RECORD_INTRO.betweenScenariosMs);
-  await runScenario("production", false);
-  await sleep(RECORD_INTRO.betweenScenariosMs);
-  await runScenario("production", true);
-  await sleep(RECORD_INTRO.betweenScenariosMs);
-  elements.btnStep4.click();
-  await sleep(RECORD_INTRO.resultsHoldMs);
-  document.body.dataset.recordComplete = "true";
 }
 
 function goToStep(step) {
@@ -142,14 +109,12 @@ function goToStep(step) {
 
   updateActionButtons();
 
-  const scrollBehavior = state.recordMode ? "instant" : "smooth";
-
   if (step === 1) {
-    window.scrollTo({ top: 0, behavior: scrollBehavior });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   } else if (step <= 3) {
-    elements.panelCompare.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+    elements.panelCompare.scrollIntoView({ behavior: "smooth", block: "start" });
   } else {
-    elements.panelResults.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+    elements.panelResults.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
@@ -271,10 +236,8 @@ async function runStaticScenario(mode, approved, container) {
     events = state.staticDemo.production;
   }
 
-  const stepDelay = state.recordMode ? STEP_DELAY_MS * state.recordPace : STEP_DELAY_MS;
-
   for (const event of events) {
-    await sleep(stepDelay);
+    await sleep(STEP_DELAY_MS);
     handleEvent(event, mode, container);
     if (event.type === "hitl_required") {
       break;

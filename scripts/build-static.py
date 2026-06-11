@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy frontend assets into dist/ for static GitHub Pages hosting."""
+"""Copy frontend assets into dist/ for static preview hosting."""
 
 from __future__ import annotations
 
@@ -21,7 +21,6 @@ def main() -> None:
     (DIST / ".nojekyll").touch()
     print("Built static site → dist/")
     print("Preview: python3 -m http.server 4173 --directory dist")
-    print("Recording: http://localhost:4173/?record=1")
 
 
 if __name__ == "__main__":
