@@ -37,7 +37,15 @@ cp .env.example .env   # optional: add LLM_API_KEY for live model calls
 
 Open http://localhost:8080
 
-## Static preview (no API)
+## Live demo
+
+Static build hosted on GitHub Pages (no API or login required):
+
+**https://doublelbuildsai.github.io/agent-readiness-workbench/**
+
+Pushes to `main` rebuild and publish automatically.
+
+## Static preview (local, no API)
 
 Build a self-contained copy that runs from pre-recorded events in `static-demo.json`:
 
