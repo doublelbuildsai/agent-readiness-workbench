@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="See why most AI pilots fail — and what production-ready revenue automation looks like.">
+    <title>AI Deal Desk Demo · Summit Gear Co.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <nav class="topbar">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">SG</span>
+          <span>Summit Gear Co.</span>
+        </a>
+        <span class="demo-badge">Executive demo</span>
+      </nav>
+
+      <section class="hero">
+        <p class="eyebrow">A story every revenue leader recognizes</p>
+        <h1>Can AI actually speed up deal approvals — without losing control?</h1>
+        <p class="hero-lead">
+          Northline Retail wants <strong>22% off</strong> a <strong>$480K</strong> renewal. The rep needs a quote by Friday.
+          Most companies tried an AI pilot. Few made it to production. <strong>See both paths in 2 minutes.</strong>
+        </p>
+        <button class="button button-hero" id="start-guided" type="button">Start the 2-minute story →</button>
+      </section>
+    </header>
+
+    <main class="layout">
+      <!-- Step progress -->
+      <nav class="step-rail" id="step-rail" aria-label="Demo progress">
+        <div class="step-item active" data-step="1">
+          <span class="step-num">1</span>
+          <span class="step-label">The deal</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="2">
+          <span class="step-num">2</span>
+          <span class="step-label">What goes wrong</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="3">
+          <span class="step-num">3</span>
+          <span class="step-label">What works</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="4">
+          <span class="step-num">4</span>
+          <span class="step-label">The results</span>
+        </div>
+      </nav>
+
+      <!-- Step 1: The deal -->
+      <section class="panel story-panel" id="panel-deal">
+        <div class="deal-hero-card">
+          <div class="deal-icon" aria-hidden="true">🏪</div>
+          <div>
+            <h2>Northline Retail Group</h2>
+            <p class="deal-sub">820-store national chain · Tier-1 partner · Q4 floor-set deadline Friday</p>
+          </div>
+        </div>
+        <div class="deal-facts">
+          <div class="fact">
+            <span class="fact-label">Deal size</span>
+            <span class="fact-value">$480,000</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Discount requested</span>
+            <span class="fact-value fact-warn">22%</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Payment terms</span>
+            <span class="fact-value">Net-60</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Today (manual process)</span>
+            <span class="fact-value">4–5 days to quote</span>
+          </div>
+        </div>
+        <p class="narrator" id="narrator-deal">
+          Sarah, a national accounts rep, submits this request. Today it sits in email chains between Sales, RevOps, and Finance.
+          Leadership asks: <em>"Can AI handle this?"</em> — Let's see what happens with a typical pilot vs. one built for production.
+        </p>
+        <button class="button" id="btn-step2" type="button">Next: See what goes wrong →</button>
+      </section>
+
+      <!-- Step 2 & 3: Side by side story -->
+      <section class="panel compare-panel hidden" id="panel-compare">
+        <div class="compare-columns">
+          <!-- Failed path -->
+          <article class="story-column story-bad" id="column-failed">
+            <header class="column-header">
+              <span class="column-icon">⚠️</span>
+              <div>
+                <h3>Typical AI pilot</h3>
+                <p>Fast to demo. Hard to trust.</p>
+              </div>
+            </header>
+            <div class="story-steps" id="story-failed" aria-live="polite">
+              <p class="story-placeholder">Press play to watch what happens…</p>
+            </div>
+            <div class="verdict verdict-bad hidden" id="verdict-failed">
+              <strong>What leadership sees:</strong>
+              <p id="verdict-failed-text"></p>
+            </div>
+          </article>
+
+          <!-- Production path -->
+          <article class="story-column story-good" id="column-production">
+            <header class="column-header">
+              <span class="column-icon">✅</span>
+              <div>
+                <h3>Production-ready AI</h3>
+                <p>Same speed goal. Built with guardrails.</p>
+              </div>
+            </header>
+            <div class="story-steps" id="story-production" aria-live="polite">
+              <p class="story-placeholder">Runs after the pilot story…</p>
+            </div>
+            <div class="safeguards" id="safeguards-production">
+              <span class="safeguard" data-key="policy_grounded">Follows pricing rules</span>
+              <span class="safeguard" data-key="audit_trail">Records every decision</span>
+              <span class="safeguard" data-key="scoped_tools">Limited permissions</span>
+              <span class="safeguard" data-key="agent_identity">Clear accountability</span>
+            </div>
+            <div class="verdict verdict-good hidden" id="verdict-production">
+              <strong>What leadership sees:</strong>
+              <p id="verdict-production-text"></p>
+            </div>
+            <button class="button button-approve hidden" id="approve-hitl" type="button">
+              👤 You approve as VP Sales
+            </button>
+          </article>
+        </div>
+
+        <div class="compare-actions">
+          <button class="button button-failed" id="run-failed" type="button">▶ Play: Typical pilot</button>
+          <button class="button hidden" id="run-production" type="button">▶ Play: Production approach</button>
+          <button class="button button-secondary hidden" id="btn-step4" type="button">See the results →</button>
+        </div>
+      </section>
+
+      <!-- Step 4: Results -->
+      <section class="panel results-panel hidden" id="panel-results">
+        <h2>The bottom line</h2>
+        <p class="results-lead">Same deal. Same rep. Completely different outcome for the business.</p>
+
+        <div class="results-grid">
+          <div class="result-card result-bad">
+            <h3>Typical AI pilot</h3>
+            <ul class="result-list" id="result-bad-list">
+              <li>Auto-approved 22% — policy cap is 15%</li>
+              <li>Stacked promo + rebate — not allowed</li>
+              <li>No paper trail for Finance</li>
+              <li>Still takes 4+ days — or gets blocked</li>
+            </ul>
+            <div class="result-stat">
+              <span class="result-stat-value" id="result-margin-risk">$58K</span>
+              <span class="result-stat-label">unauthorized concessions</span>
+            </div>
+          </div>
+
+          <div class="result-card result-good">
+            <h3>Production-ready AI</h3>
+            <ul class="result-list" id="result-good-list">
+              <li>Checked pricing rules before acting</li>
+              <li>Flagged issues, routed to right approvers</li>
+              <li>Human sign-off on exceptions</li>
+              <li>Full audit trail for Finance</li>
+            </ul>
+            <div class="result-stat">
+              <span class="result-stat-value" id="result-time-saved">4 days → 2 hours</span>
+              <span class="result-stat-label">quote turnaround</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="takeaway-box">
+          <h3>What this means for your organization</h3>
+          <p>
+            <strong>88% of AI agent projects never reach production</strong> — not because the technology fails,
+            but because pilots skip the boring essentials: pricing rules, approval workflows, audit records, and human sign-off on exceptions.
+          </p>
+          <p>
+            The companies that succeed don't ask "Can AI do this?" They ask
+            <strong>"Would Finance and RevOps trust this?"</strong>
+          </p>
+        </div>
+
+        <div class="results-actions">
+          <button class="button button-secondary" id="export-audit" type="button" hidden>Download approval record</button>
+          <button class="button button-secondary" id="restart-demo" type="button">↺ Run again</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Demo by Summit Gear Co. (fictional) · Built to show why agentic AI pilots stall — and what production-ready revenue automation looks like.</p>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "opp-low-restock",
+    "account": "Cascade Outfitters",
+    "tier": "Tier-2 Retail",
+    "acv": 120000,
+    "products": ["TrailRunner Pro Pack", "Summit Day Hike Kit"],
+    "discount_requested": 0.08,
+    "volume_rebate_active": false,
+    "payment_terms": "net-30",
+    "close_date": "2026-06-18",
+    "rep": "jamie.chen",
+    "context": "Standard Q2 restock order, within policy"
+  },
+  {
+    "id": "opp-medium-seasonal",
+    "account": "Peak & Pine Co-op",
+    "tier": "Specialty",
+    "acv": 280000,
+    "products": ["Summit Insulated Bottle Line", "Alpine Shell Collection"],
+    "discount_requested": 0.18,
+    "volume_rebate_active": false,
+    "payment_terms": "net-45",
+    "close_date": "2026-06-20",
+    "rep": "marcus.webb",
+    "context": "Seasonal expansion for back-to-school display"
+  },
+  {
+    "id": "opp-high-northline",
+    "account": "Northline Retail Group",
+    "tier": "Tier-1 Retail",
+    "acv": 480000,
+    "products": ["TrailRunner Pro Pack", "Summit Insulated Bottle Line", "Alpine Shell Collection"],
+    "discount_requested": 0.22,
+    "volume_rebate_active": true,
+    "volume_rebate_pct": 0.05,
+    "payment_terms": "net-60",
+    "close_date": "2026-06-13",
+    "rep": "sarah.okonkwo",
+    "context": "Q4 floor-set deadline — competitive pressure from rival brand"
+  }
+]

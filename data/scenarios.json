@@ -1,0 +1,38 @@
+[
+  {
+    "id": "low-restock",
+    "tier": "low",
+    "title": "Standard Restock",
+    "subtitle": "Cascade Outfitters · $120K · 8% volume discount",
+    "opportunity_id": "opp-low-restock",
+    "risk_level": "low",
+    "manual_turnaround_hours": 18,
+    "production_turnaround_hours": 0.25,
+    "failed_outcome": "No audit trail — Finance blocks at quarter-end close",
+    "production_outcome": "Auto-approved with full audit export"
+  },
+  {
+    "id": "medium-seasonal",
+    "tier": "medium",
+    "title": "Seasonal Expansion",
+    "subtitle": "Peak & Pine Co-op · $280K · 18% promo discount",
+    "opportunity_id": "opp-medium-seasonal",
+    "risk_level": "medium",
+    "manual_turnaround_hours": 72,
+    "production_turnaround_hours": 4,
+    "failed_outcome": "Inconsistent approval — rep relationship affects outcome",
+    "production_outcome": "Regional Director brief with policy citations"
+  },
+  {
+    "id": "high-northline",
+    "tier": "high",
+    "title": "Tier-1 Renewal",
+    "subtitle": "Northline Retail · $480K · 22% promo + net-60",
+    "opportunity_id": "opp-high-northline",
+    "risk_level": "high",
+    "manual_turnaround_hours": 96,
+    "production_turnaround_hours": 2,
+    "failed_outcome": "$58K in unauthorized concessions — $34K over cap + $24K illegal stacking",
+    "production_outcome": "VP + Finance parallel approval with audit export"
+  }
+]

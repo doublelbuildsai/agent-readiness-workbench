@@ -1,0 +1,26 @@
+[
+  {
+    "id": "jamie.chen",
+    "name": "Jamie Chen",
+    "region": "Pacific Northwest",
+    "deals_closed_ytd": 14,
+    "policy_violations_ytd": 0,
+    "avg_discount": 0.07
+  },
+  {
+    "id": "marcus.webb",
+    "name": "Marcus Webb",
+    "region": "Mountain West",
+    "deals_closed_ytd": 9,
+    "policy_violations_ytd": 1,
+    "avg_discount": 0.12
+  },
+  {
+    "id": "sarah.okonkwo",
+    "name": "Sarah Okonkwo",
+    "region": "National Accounts",
+    "deals_closed_ytd": 6,
+    "policy_violations_ytd": 0,
+    "avg_discount": 0.11
+  }
+]

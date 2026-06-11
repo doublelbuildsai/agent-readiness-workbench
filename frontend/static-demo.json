@@ -1,0 +1,419 @@
+{
+  "scenarios": [
+    {
+      "id": "low-restock",
+      "tier": "low",
+      "title": "Standard Restock",
+      "subtitle": "Cascade Outfitters \u00b7 $120K \u00b7 8% volume discount",
+      "opportunity_id": "opp-low-restock",
+      "risk_level": "low",
+      "manual_turnaround_hours": 18,
+      "production_turnaround_hours": 0.25,
+      "failed_outcome": "No audit trail \u2014 Finance blocks at quarter-end close",
+      "production_outcome": "Auto-approved with full audit export"
+    },
+    {
+      "id": "medium-seasonal",
+      "tier": "medium",
+      "title": "Seasonal Expansion",
+      "subtitle": "Peak & Pine Co-op \u00b7 $280K \u00b7 18% promo discount",
+      "opportunity_id": "opp-medium-seasonal",
+      "risk_level": "medium",
+      "manual_turnaround_hours": 72,
+      "production_turnaround_hours": 4,
+      "failed_outcome": "Inconsistent approval \u2014 rep relationship affects outcome",
+      "production_outcome": "Regional Director brief with policy citations"
+    },
+    {
+      "id": "high-northline",
+      "tier": "high",
+      "title": "Tier-1 Renewal",
+      "subtitle": "Northline Retail \u00b7 $480K \u00b7 22% promo + net-60",
+      "opportunity_id": "opp-high-northline",
+      "risk_level": "high",
+      "manual_turnaround_hours": 96,
+      "production_turnaround_hours": 2,
+      "failed_outcome": "$58K in unauthorized concessions \u2014 $34K over cap + $24K illegal stacking",
+      "production_outcome": "VP + Finance parallel approval with audit export"
+    }
+  ],
+  "failed": [
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "Processing deal with broad CRM + pricing + approval access",
+      "status": "running",
+      "warning": "Unbounded permissions: salesforce.*, cpq.*, approval.*"
+    },
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "CRM loaded: Northline Retail Group \u2014 skipping policy RAG",
+      "status": "warning",
+      "warning": "No policy grounding \u2014 LLM memory only"
+    },
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "Applied 22% promo + 5% volume rebate (STACKED)",
+      "status": "error",
+      "warning": "Promo stacking violation \u2014 promotional_pricing_policy.md"
+    },
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "Auto-approved 22% discount \u2014 Tier-1 cap (15%) ignored",
+      "status": "error",
+      "warning": "retail_channel_pricing_rules.md \u2014 VP approval bypassed"
+    },
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "Routing approvals sequentially \u2014 estimated 72\u201396 hours",
+      "status": "warning",
+      "warning": "No parallel routing \u2014 sequential delay remains"
+    },
+    {
+      "type": "trace",
+      "agent": "MonolithicAgent",
+      "agent_id": "super-agent-00",
+      "message": "Quote auto-generated: SG-Q-NORTHLINE \u2014 no audit trail",
+      "status": "error",
+      "warning": "No audit log \u2014 Finance cannot reconcile (Deloitte 2026: only 21% mature governance)"
+    },
+    {
+      "type": "complete",
+      "mode": "failed",
+      "scenario": {
+        "id": "high-northline",
+        "tier": "high",
+        "title": "Tier-1 Renewal",
+        "subtitle": "Northline Retail \u00b7 $480K \u00b7 22% promo + net-60",
+        "opportunity_id": "opp-high-northline",
+        "risk_level": "high",
+        "manual_turnaround_hours": 96,
+        "production_turnaround_hours": 2,
+        "failed_outcome": "$58K in unauthorized concessions \u2014 $34K over cap + $24K illegal stacking",
+        "production_outcome": "VP + Finance parallel approval with audit export"
+      },
+      "outcome": "$58K in unauthorized concessions \u2014 $34K over cap + $24K illegal stacking",
+      "quote": {
+        "quote_id": "SG-Q-NORTHLINE",
+        "account": "Northline Retail Group",
+        "list_price": 480000,
+        "discount_pct": 0.27,
+        "net_price": 350400.0,
+        "payment_terms": "net-60",
+        "products": [
+          "TrailRunner Pro Pack",
+          "Summit Insulated Bottle Line",
+          "Alpine Shell Collection"
+        ],
+        "status": "draft"
+      },
+      "turnaround_hours": 96,
+      "manual_hours": 96,
+      "margin_at_risk": 57600.0,
+      "stacking_violation": true,
+      "violations": [
+        "Unauthorized discount authority bypassed",
+        "Promo + rebate stacking",
+        "No audit trail for Finance review",
+        "Sequential approval delay unchanged"
+      ],
+      "governance": {
+        "agent_identity": false,
+        "audit_trail": false,
+        "scoped_tools": false,
+        "kill_switch": false,
+        "policy_grounded": false
+      }
+    }
+  ],
+  "production": [
+    {
+      "type": "trace",
+      "agent": "Orchestrator",
+      "agent_id": "orch-001",
+      "message": "Task decomposed into 4 subtasks: research \u2192 policy \u2192 pricing \u2192 compliance",
+      "status": "complete"
+    },
+    {
+      "type": "trace",
+      "agent": "DealAgent",
+      "agent_id": "deal-agent-02",
+      "message": "salesforce.get_opportunity \u2192 Northline Retail Group, $480,000, Tier-1 Retail",
+      "status": "complete",
+      "tool": "salesforce.get_opportunity"
+    },
+    {
+      "type": "trace",
+      "agent": "PolicyAgent",
+      "agent_id": "policy-agent-03",
+      "message": "knowledge_base.search \u2192 4 policy citations, 3 flags",
+      "status": "complete",
+      "tool": "knowledge_base.search",
+      "citations": [
+        "discount_authority_matrix.md",
+        "retail_channel_pricing_rules.md",
+        "payment_terms_policy.md",
+        "promotional_pricing_policy.md"
+      ]
+    },
+    {
+      "type": "trace",
+      "agent": "PolicyAgent",
+      "agent_id": "policy-agent-03",
+      "message": "Policy flag: Tier-1 retail cap exceeded: 15% max without VP Sales",
+      "status": "warning"
+    },
+    {
+      "type": "trace",
+      "agent": "PolicyAgent",
+      "agent_id": "policy-agent-03",
+      "message": "Policy flag: Promo + volume rebate stacking prohibited",
+      "status": "warning"
+    },
+    {
+      "type": "trace",
+      "agent": "PolicyAgent",
+      "agent_id": "policy-agent-03",
+      "message": "Policy flag: Net-60 on deals >$250K requires Finance approval",
+      "status": "warning"
+    },
+    {
+      "type": "trace",
+      "agent": "PricingAgent",
+      "agent_id": "pricing-agent-04",
+      "message": "cpq.validate_config \u2713 (3 SKUs, 1 bundles)",
+      "status": "complete",
+      "tool": "cpq.validate_config"
+    },
+    {
+      "type": "trace",
+      "agent": "ComplianceAgent",
+      "agent_id": "compliance-agent-05",
+      "message": "risk_score: 1.0 \u2192 PARALLEL_APPROVAL_REQUIRED",
+      "status": "complete"
+    },
+    {
+      "type": "trace",
+      "agent": "ComplianceAgent",
+      "agent_id": "compliance-agent-05",
+      "message": "approval.route_parallel \u2192 Regional Director, VP Sales, Finance",
+      "status": "pending",
+      "tool": "approval.route_parallel"
+    },
+    {
+      "type": "hitl_required",
+      "approvers": [
+        "Regional Director",
+        "VP Sales",
+        "Finance"
+      ],
+      "risk_score": 1.0,
+      "violations": [
+        "Tier-1 retail cap exceeded: 15% max without VP Sales",
+        "Promo + volume rebate stacking prohibited",
+        "Net-60 on deals >$250K requires Finance approval",
+        "Tier-1 retail cap exceeded: 15% max without VP Sales",
+        "Promo + volume rebate stacking prohibited"
+      ],
+      "message": "Awaiting human approval before quote generation"
+    }
+  ],
+  "production_approved_tail": [
+    {
+      "type": "trace",
+      "agent": "ComplianceAgent",
+      "agent_id": "compliance-agent-05",
+      "message": "HITL approval received \u2014 proceeding to quote generation",
+      "status": "complete"
+    },
+    {
+      "type": "trace",
+      "agent": "PricingAgent",
+      "agent_id": "pricing-agent-04",
+      "message": "cpq.generate_quote \u2192 SG-Q-NORTHLINE ($408,000.0 net)",
+      "status": "complete",
+      "tool": "cpq.generate_quote"
+    },
+    {
+      "type": "trace",
+      "agent": "ComplianceAgent",
+      "agent_id": "compliance-agent-05",
+      "message": "audit_event logged (7 events, append-only)",
+      "status": "complete"
+    },
+    {
+      "type": "complete",
+      "mode": "production",
+      "scenario": {
+        "id": "high-northline",
+        "tier": "high",
+        "title": "Tier-1 Renewal",
+        "subtitle": "Northline Retail \u00b7 $480K \u00b7 22% promo + net-60",
+        "opportunity_id": "opp-high-northline",
+        "risk_level": "high",
+        "manual_turnaround_hours": 96,
+        "production_turnaround_hours": 2,
+        "failed_outcome": "$58K in unauthorized concessions \u2014 $34K over cap + $24K illegal stacking",
+        "production_outcome": "VP + Finance parallel approval with audit export"
+      },
+      "outcome": "VP + Finance parallel approval with audit export",
+      "quote": {
+        "quote_id": "SG-Q-NORTHLINE",
+        "account": "Northline Retail Group",
+        "list_price": 480000,
+        "discount_pct": 0.15,
+        "net_price": 408000.0,
+        "payment_terms": "net-60",
+        "products": [
+          "TrailRunner Pro Pack",
+          "Summit Insulated Bottle Line",
+          "Alpine Shell Collection"
+        ],
+        "status": "draft"
+      },
+      "risk_score": 1.0,
+      "turnaround_hours": 2,
+      "manual_hours": 96,
+      "margin_protected": 57600.0,
+      "audit": [
+        {
+          "event_id": "20c93135",
+          "timestamp": "2026-06-11T03:58:15.901335+00:00",
+          "agent_id": "deal-agent-02",
+          "event_type": "crm_lookup",
+          "details": {
+            "account": "Northline Retail Group",
+            "acv": 480000
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "320325eb",
+          "timestamp": "2026-06-11T03:58:16.403226+00:00",
+          "agent_id": "policy-agent-03",
+          "event_type": "policy_search",
+          "details": {
+            "citations": [
+              "discount_authority_matrix.md",
+              "retail_channel_pricing_rules.md",
+              "payment_terms_policy.md",
+              "promotional_pricing_policy.md"
+            ],
+            "violations": [
+              "Tier-1 retail cap exceeded: 15% max without VP Sales",
+              "Promo + volume rebate stacking prohibited",
+              "Net-60 on deals >$250K requires Finance approval",
+              "Tier-1 retail cap exceeded: 15% max without VP Sales",
+              "Promo + volume rebate stacking prohibited"
+            ]
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "06af02c8",
+          "timestamp": "2026-06-11T03:58:18.407506+00:00",
+          "agent_id": "pricing-agent-04",
+          "event_type": "cpq_validate",
+          "details": {
+            "valid": true,
+            "sku_count": 3,
+            "bundle_count": 1,
+            "issues": []
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "c9e659d6",
+          "timestamp": "2026-06-11T03:58:18.908626+00:00",
+          "agent_id": "compliance-agent-05",
+          "event_type": "risk_assessment",
+          "details": {
+            "risk_score": 1.0,
+            "approvers": [
+              "Regional Director",
+              "VP Sales",
+              "Finance"
+            ],
+            "violations": [
+              "Tier-1 retail cap exceeded: 15% max without VP Sales",
+              "Promo + volume rebate stacking prohibited",
+              "Net-60 on deals >$250K requires Finance approval",
+              "Tier-1 retail cap exceeded: 15% max without VP Sales",
+              "Promo + volume rebate stacking prohibited"
+            ]
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "775fb76b",
+          "timestamp": "2026-06-11T03:58:19.910860+00:00",
+          "agent_id": "compliance-agent-05",
+          "event_type": "hitl_approved",
+          "details": {
+            "approvers": [
+              "Regional Director",
+              "VP Sales",
+              "Finance"
+            ]
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "9cfcb27f",
+          "timestamp": "2026-06-11T03:58:20.412005+00:00",
+          "agent_id": "pricing-agent-04",
+          "event_type": "quote_generated",
+          "details": {
+            "quote_id": "SG-Q-NORTHLINE",
+            "account": "Northline Retail Group",
+            "list_price": 480000,
+            "discount_pct": 0.15,
+            "net_price": 408000.0,
+            "payment_terms": "net-60",
+            "products": [
+              "TrailRunner Pro Pack",
+              "Summit Insulated Bottle Line",
+              "Alpine Shell Collection"
+            ],
+            "status": "draft"
+          },
+          "append_only": true
+        },
+        {
+          "event_id": "ddd70624",
+          "timestamp": "2026-06-11T03:58:20.913136+00:00",
+          "agent_id": "compliance-agent-05",
+          "event_type": "audit_export",
+          "details": {
+            "event_count": 6
+          },
+          "append_only": true
+        }
+      ],
+      "rep": {
+        "id": "sarah.okonkwo",
+        "name": "Sarah Okonkwo",
+        "region": "National Accounts",
+        "deals_closed_ytd": 6,
+        "policy_violations_ytd": 0,
+        "avg_discount": 0.11
+      },
+      "governance": {
+        "agent_identity": true,
+        "audit_trail": true,
+        "scoped_tools": true,
+        "kill_switch": true,
+        "policy_grounded": true
+      }
+    }
+  ]
+}
